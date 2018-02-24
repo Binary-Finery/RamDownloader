@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RAM Cloud</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_laucher">LaucherActivity</string>
+    <string name="title_activity_install_ram">InstallRAMActivity</string>
+    <string name="complete">2000 MB (2.00 GB)</string>
+</resources>
