@@ -3,11 +3,9 @@ package spencerstudios.com.ramdownloader;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,10 +19,9 @@ public class MainActivity extends AppCompatActivity {
     private int mb = 0;
     private Handler handler;
     private Runnable runnable;
-    private TextView tvInfo, per;
+    private TextView tvInfo, percent;
     private Random random;
     private MKLoader mkLoader;
-    private double gb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,28 +32,24 @@ public class MainActivity extends AppCompatActivity {
 
         if (getSupportActionBar() != null) getSupportActionBar().hide();
 
-        mkLoader = (MKLoader) findViewById(R.id.loader);
-        tvInfo = (TextView) findViewById(R.id.tv_info);
-        per = (TextView) findViewById(R.id.per);
-        mkLoader.setVisibility(View.INVISIBLE);
+        initViews();
 
         random = new Random();
-
         handler = new Handler();
+
         runnable = new Runnable() {
             @Override
             public void run() {
-                if (mb < 50) {
-                    handler.postDelayed(this, ((random.nextInt(5) + 1) * 50));
-                    int r = random.nextInt(4) + 1;
+                if (mb < 995) {
+                    handler.postDelayed(this, ((random.nextInt(5) + 1) * 50)); //add random delay
+                    int r = random.nextInt(4) + 1; //increment downloaded RAM by a random amount
                     mb += r;
-                    int p = (mb * 100) / 2000;
-                    gb = mb * 1.0 / 1000;
-                    per.setText(String.format(Locale.getDefault(), "%d%%", p));
-                    tvInfo.setText(mb + " MB " + String.format(Locale.getDefault(), "(%.2f GB)", gb));
+                    percent.setText(String.format(Locale.getDefault(), "%d%%", (mb * 100) / 1000));
+                    tvInfo.setText(mb + " MB " + String.format(Locale.getDefault(), "(%.2f GB)", mb * 1.0 / 1000));
 
                 } else {
                     tvInfo.setText(getString(R.string.complete));
+                    percent.setText("100%");
                     handler.removeCallbacks(runnable);
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -77,12 +70,19 @@ public class MainActivity extends AppCompatActivity {
         }, 100);
     }
 
+    private void beginDownload() {
+        mkLoader.setVisibility(View.VISIBLE);
+        handler.post(runnable);
+    }
+
     public void onBackPressed() {
         Toast.makeText(getApplication(), "processing, please be patient", Toast.LENGTH_SHORT).show();
     }
 
-    private void beginDownload() {
-        mkLoader.setVisibility(View.VISIBLE);
-        handler.post(runnable);
+    private void initViews() {
+        mkLoader = (MKLoader) findViewById(R.id.loader);
+        tvInfo = (TextView) findViewById(R.id.tv_info);
+        percent = (TextView) findViewById(R.id.per);
+        mkLoader.setVisibility(View.INVISIBLE);
     }
 }

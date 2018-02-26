@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
     defaultConfig {
-        applicationId "spencerstudios.com.ramdownloader"
+        applicationId "com.spencerstudios.ramdownloader"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
@@ -13,7 +13,8 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

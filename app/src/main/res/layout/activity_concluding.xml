@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,12 +10,12 @@
 
 
     <TextView
-        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-smallcaps"
-        android:textColor="#FFFFFF"
-        android:text="Installing your RAM..."/>
+        android:text="Installing your RAM..."
+        android:textColor="#FFFFFF" />
 
     <ProgressBar
         android:id="@+id/progressBar1"
@@ -36,41 +35,37 @@
         android:id="@+id/ll_conclude"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
+        android:layout_weight="1"
         android:gravity="center"
-        android:layout_weight="1">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="28sp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="center_horizontal"
+            android:text="CONGRATULATIONS"
             android:textColor="@color/colorAccent"
-            android:text="CONGRATULATIONS" />
-
-        <TextView
-            android:layout_marginTop="24dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:text="Installing successful, you have boosted this devices RAM capacity by 1GB"/>
-
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/tv_stats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:text="testicles 123"/>
+            android:layout_marginTop="24dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="center_horizontal"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/btnClose"
-            android:layout_marginTop="24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:background="@color/colorBtn"
-            android:textColor="#FFFFFF"
             android:fontFamily="sans-serif-smallcaps"
-            android:text="Close app and enjoy your extra RAM"/>
+            android:text="Close app and enjoy your extra RAM"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 

@@ -1,7 +1,5 @@
 package spencerstudios.com.ramdownloader;
 
-import android.app.ActivityManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,7 +20,7 @@ public class LaucherActivity extends AppCompatActivity {
     private Handler handler;
     private Runnable runnable;
     private int c = 0;
-    private boolean isConnection = true, btnConnecting = false;
+    private boolean isConnecting = true, btnConnecting = false;
     private Button btn;
 
     @Override
@@ -83,9 +81,9 @@ public class LaucherActivity extends AppCompatActivity {
                 if (c == 3500) tvConnect.setText("connecting to cloud ram...");
                 if (c == 7000) tvConnect.setText("configuring your ram...");
                 if (c == 10000) tvConnect.setText("preparing your download...");
-                if (c == 12500) isConnection = false;
+                if (c == 12500) isConnecting = false;
 
-                if (isConnection) {
+                if (isConnecting) {
                     handler.postDelayed(this, 700);
                     c += 500;
                 } else {
@@ -95,7 +93,11 @@ public class LaucherActivity extends AppCompatActivity {
                 }
             }
         };
-
         handler.post(runnable);
+    }
+
+    public void onBackPressed() {
+        handler.removeCallbacks(runnable);
+        finishAffinity();
     }
 }

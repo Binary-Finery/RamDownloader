@@ -12,13 +12,12 @@
     tools:showIn="@layout/activity_main">
 
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="Downloading RAM..."
-            android:textColor="#FFFFFF" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Downloading your RAM..."
+        android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/per"
@@ -50,25 +49,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="sans-serif-smallcaps"
-                android:textColor="#FFFFFF"
-                android:text="1245 MB (1.23 GB)"/>
+                android:text="1245 MB (1.23 GB)"
+                android:textColor="#FFFFFF" />
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
-                android:fontFamily="sans-serif-smallcaps"
-                android:text=" of"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="22sp"
-                android:fontFamily="sans-serif-smallcaps"
-                android:textColor="@color/colorTot"
-                android:textStyle="bold"
-                android:text=" 2 GB"/>
-
-    </LinearLayout>
+</LinearLayout>

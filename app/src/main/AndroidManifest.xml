@@ -6,11 +6,12 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".LaucherActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -21,13 +22,12 @@
         </activity>
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_laucher"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ConcludingActivity" />
         <activity
-            android:name=".InstallRAMActivity"
-            android:label="@string/title_activity_install_ram"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".ConcludingActivity"
+            android:configChanges="screenSize|orientation" />
     </application>
 
 </manifest>

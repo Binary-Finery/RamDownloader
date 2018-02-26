@@ -1,23 +1,16 @@
 package spencerstudios.com.ramdownloader;
 
-import android.media.Image;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.Locale;
-import java.util.Random;
 
 public class ConcludingActivity extends AppCompatActivity {
 
@@ -25,7 +18,7 @@ public class ConcludingActivity extends AppCompatActivity {
     private Handler handler;
     private Runnable runnable;
     private ProgressBar p1;
-    private TextView tvUnzip, tvStats;
+    private TextView tvUnzip;
     private int c = 0;
     private LinearLayout ll;
     private boolean isInstalled = false;
@@ -43,9 +36,16 @@ public class ConcludingActivity extends AppCompatActivity {
         ll = (LinearLayout) findViewById(R.id.ll_conclude);
         ll.setVisibility(View.INVISIBLE);
         tvUnzip = (TextView)findViewById(R.id.zip);
-        tvStats = (TextView)findViewById(R.id.tv_stats) ;
-
+        TextView tvStats = (TextView) findViewById(R.id.tv_stats);
         Button btn = (Button)findViewById(R.id.btnClose);
+
+        double mb = RamInfo.getRAM(this) + 1000;
+
+        String newMB = String.format(Locale.getDefault(), "%dMB", (int) mb);
+        String newGB = String.format(Locale.getDefault(), "(%.2fGB)", mb * 1.0 / 1000);
+
+        tvStats.setText("Your device has been successfully equipped with an additional 1GB of DDR4 RAM.\n\nYour new total RAM capacity is " + newMB + " " + newGB);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,7 +85,8 @@ public class ConcludingActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (isInstalled) {
             handler.removeCallbacks(runnable);
-            Toast.makeText(getApplication(), "Enjoy you extra Extra RAM ;)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplication(), "Enjoy your extra Extra RAM ;)", Toast.LENGTH_SHORT).show();
+            finishAffinity();
         }else{
             Toast.makeText(getApplicationContext(), "Installing RAM, please be patient", Toast.LENGTH_SHORT).show();
         }
